@@ -162,6 +162,36 @@ min(a: Inte, b: Inte): Inte // if A < B then A else B
 // max(int(false, 1), int(false, 3)) = -1
 max(a: Inte, b: Inte): Inte // if A > B then A else B
   ?max
+// Returns the list without the first element
+tail<A: Type>(xs: List<A>): List<A>
+  case xs {
+    nil:  List.nil<A>
+    cons: xs.tail
+  }
+
+// Returns the length of a list
+length<A: Type>(xs: List<A>): Nat
+  case xs {
+    nil: Nat.zero
+    cons: Nat.succ(length<A>(xs.tail))
+  }
+
+// Concatenates two lists
+concat<A: Type>(xs: List<A>, ys: List<A>): List<A>
+  case xs {
+    nil: case ys {
+      nil: List.nil<A>
+      cons: List.cons<A>(ys.head, concat<A>(List.nil<A>, ys.tail))
+    }
+    cons: List.cons<A>(xs.head, concat<A>(xs.tail, ys))
+  }
+
+// Applies a function to all elements of a list
+map<A: Type, B: Type>(fn: A -> B, xs: List<A>): List<B>
+  case xs {
+    nil: List.nil<B>
+    cons: List.cons<B>(fn(xs.head), map<A,B>(fn, xs.tail))
+  }
 
 // Half
 // Divides an Integer by two
@@ -178,3 +208,15 @@ hlf(a: Inte): Inte
 // int(true,  10) / int(false, 12) = +0
 div(a: Inte, b: Inte): Inte 
   ?div
+reverse.go<A: Type>(new_list: List<A>, old_list: List<A>): List<A>
+  case old_list {
+    nil:  new_list
+    cons: reverse.go<A>(List.cons<A>(old_list.head, new_list), old_list.tail)
+  }
+
+// ex_06:_
+//   reverse!(List.cons!(1, List.cons!(2, List.nil!)))
+  // concat!(List.cons!(1,List.cons!(2,List.nil!), List.cons!(3,List.cons!(4,List.nil!)))
+  // map!!(inc, List.cons!(1,List.cons!(2,List.nil!)))
+// inc(a: Nat): Nat // <-Aqui jogas, e savio!  
+//   Nat.succ(a)
