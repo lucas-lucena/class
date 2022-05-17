@@ -14,19 +14,73 @@ type Maybe <A: Type> {
 // Ex: zip!!([1,2], ["a","b","c"]) == [{1, "a"}, {2 , "b"}]
 // Ex: zip!!(["a", "b"], [3, 5])   == [{"a", 3}, {2 , "b"}]
 zip<A: Type, B: Type>(xs: List<A>, ys: List<B>): List<Pair<A,B>>
-  ?a
+  case xs ys {
+    cons cons: List.cons<Pair<A,B>>(Pair.new<A,B>(xs.head, ys.head), zip<A,B>(xs.tail, ys.tail))
+  }
+  default List.nil<Pair<A,B>>
 
+// ex_07:_ 
+//   zip!!(List.cons!(1,List.nil!), List.cons!(2,List.nil!))
 // Returns the smallest element of a List
 smallest(xs: List<Nat>): Nat
-  ?s
+  case xs {
+    nil: 99999
+    cons: minimo(xs.head, smallest(xs.tail))
+  }
+minimo(a: Nat, b: Nat): Nat
+  case ltn(a,b){
+    true: a
+    false: b
+  }
+ltn(a: Nat, b: Nat): Bool
+  case a b {
+    zero succ: true
+    succ succ: ltn(a.pred, b.pred)
+  }
+  default false
 
 // Returns the same list without the smallest element
 delete_smallest(xs: List<Nat>): List<Nat>
-  ?d
+  let smallest = smallest(xs)
+  delete_smallest.aux(smallest, xs)
 
+delete_smallest.aux(s: Nat, xs: List<Nat>): List<Nat>
+  case xs {
+    nil: List.nil<Nat>
+    cons: case eql(s, xs.head) {
+      true: xs.tail
+      false: List.cons<Nat>(xs.head, delete_smallest.aux(s, xs.tail))
+    }
+  }
+eql(a: Nat, b: Nat): Bool 
+  case a b {
+    zero zero: true
+    succ succ: eql(a.pred, b.pred)
+  }
+  default false 
+ 
+// ex_07:_ 
+//   delete_smallest(List.cons!(1,List.cons!(1,List.cons!(2,List.nil!))))
 // Returns the same list, in ascending order
+// [1, 2 , 4, 6, 7, 30]
 sort_ascending(xs: List<Nat>): List<Nat>
-  ?a
+  case xs {
+    nil:  List.nil<Nat>
+    cons: case xs.tail {
+      nil:  xs
+      cons: case ltn(xs.head, xs.tail.head) {
+        true:  List.cons<Nat>(xs.head, sort_ascending(xs.tail))
+        false: sort_ascending(List.cons<Nat>(xs.tail.head, sort_ascending(List.cons<Nat>(xs.head, xs.tail.tail))))
+      } 
+    }
+  }
+// ex_07:_ 
+//   List.show!(Nat.show,sort_ascending(
+//     List.cons<Nat>(5, 
+//     List.cons<Nat>(3, 
+//     List.cons<Nat>(4,
+//     List.cons<Nat>(2,
+//     List.nil<Nat>)))))) 
 
 // Returns an element at an index from the list
 // if there is an element at that index
@@ -34,10 +88,20 @@ sort_ascending(xs: List<Nat>): List<Nat>
 // else
 //   returns Maybe.none!
 get<A: Type>(idx: Nat, xs: List<A>): Maybe<A>
-  ?g
+  case idx xs {
+    succ cons: get<A>(idx.pred, xs.tail)
+    zero cons: Maybe.some!(xs.head)  
+  }
+  default Maybe.none!
 
 // Removes all elements that does not match a condition
 // List.filter<Nat>(Nat.odd, [1, 2, 3, 4, 5]) = [1, 3, 5]
 filter<A: Type>(f: A -> Bool, xs: List<A>): List<A>
-  ?f
-  
+  case xs {
+    nil:  List.nil<A>
+    cons: case f(xs.head) {
+      true:  List.cons<A>(xs.head, filter<A>(f, xs.tail))
+      false: filter<A>(f, xs.tail)
+    }
+  }
+
