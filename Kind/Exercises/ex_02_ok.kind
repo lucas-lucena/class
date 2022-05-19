@@ -63,8 +63,8 @@ create(a: Bool, b: Bool): PairBool
   PairBool.new(a, b)
 
 // Inverts the values of a PairBool
-// neg(PairBool.new(false, false)) -> PairBool.new(true, true)
-// neg(PairBool.new(false, true)) -> PairBool.new(true, false)
+// neg(PairBool.new(false, false) -> PairBool.new(true, true)
+// neg(PairBool.new(false, true) -> PairBool.new(true, false)
 neg(pair: PairBool): PairBool
   case pair {
     new: PairBool.new(neg.aux(pair.fst), neg.aux(pair.snd))

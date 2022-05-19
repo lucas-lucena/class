@@ -190,6 +190,18 @@ drop(n: Nat, bs: Bits): Bits
 //take(4, d) -> Bits.i(Bits.i(Bits.i(Bits.i(Bits.e))))
 take(n: Nat, bs: Bits): Bits
   ?take
+// Advanced exercises involving Lists
+
+type List <A: Type> {
+  nil
+  cons(head: A, tail: List<A>)
+}
+
+type Maybe <A: Type> {
+  none
+  some(value: A)
+}
+
 // Returns pairs of the elements of the 2 input lists on the same index
 // Ex: zip!!([1,2], ["a","b","c"]) == [{1, "a"}, {2 , "b"}]
 // Ex: zip!!(["a", "b"], [3, 5])   == [{"a", 3}, {2 , "b"}]

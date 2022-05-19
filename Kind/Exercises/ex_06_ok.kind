@@ -162,6 +162,13 @@ min(a: Inte, b: Inte): Inte // if A < B then A else B
 // max(int(false, 1), int(false, 3)) = -1
 max(a: Inte, b: Inte): Inte // if A > B then A else B
   ?max
+// Basic exercises involving Lists
+
+type List <A: Type> {
+  nil
+  cons(head: A, tail: List<A>)
+}
+
 // Returns the list without the first element
 tail<A: Type>(xs: List<A>): List<A>
   case xs {
@@ -208,6 +215,10 @@ hlf(a: Inte): Inte
 // int(true,  10) / int(false, 12) = +0
 div(a: Inte, b: Inte): Inte 
   ?div
+// Returns the same list, with the order reversed
+reverse<A: Type>(xs: List<A>): List<A>
+  reverse.go<A>(List.nil<A>, xs)
+
 reverse.go<A: Type>(new_list: List<A>, old_list: List<A>): List<A>
   case old_list {
     nil:  new_list
@@ -219,4 +230,5 @@ reverse.go<A: Type>(new_list: List<A>, old_list: List<A>): List<A>
   // concat!(List.cons!(1,List.cons!(2,List.nil!), List.cons!(3,List.cons!(4,List.nil!)))
   // map!!(inc, List.cons!(1,List.cons!(2,List.nil!)))
 // inc(a: Nat): Nat // <-Aqui jogas, e savio!  
+//   Nat.succ(a)
 //   Nat.succ(a)

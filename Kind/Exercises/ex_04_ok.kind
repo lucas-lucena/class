@@ -46,6 +46,19 @@ fac(a: Nat): Nat
     succ: mul(a, fac(a.pred))
   }
 
+// Division
+// 1 / 2 = 0
+// x / 0 = 0
+// 5 / 2 = 2
+div(a: Nat, b: Nat): Nat // division
+  case a {
+    zero: Nat.zero
+    succ: case sub(b,a) {
+        zero: Nat.succ(div(sub(a, b), b))
+        succ: Nat.zero
+      }
+  }
+
 // Equal
 eql(a: Nat, b: Nat): Bool // Given 2 numbers, it returns true if the 2 are the same and false if they are different.
   case a b {
@@ -113,3 +126,8 @@ div(a: Nat, b: Nat): Nat // division
         succ: Nat.zero
       }
   }
+  case a b{
+    zero succ: true
+    succ succ: ltn(a.pred, b.pred)
+  }
+  default false
