@@ -3,9 +3,9 @@ type BitsMap<A: Type> {
   tie(val: Maybe<A>, lft: BitsMap<A>, rgt: BitsMap<A>)
 }
 
-// Given a Key and a Value, sets the given value to that key in the tree, if
-// that key already belongs to another value, it should be replaced with the new
-// one
+// Given a Key and a Value, sets the given value to that key in the tree
+// Creates new keys if they don't already exist in the map
+// If there already is a value for the given key, updates it.
 
 set<A: Type>(key: Bits, val: A, map: BitsMap<A>): BitsMap<A>
   ?set
@@ -20,27 +20,27 @@ get<A: Type>(key: Bits, map:BitsMap<A>): Maybe<A>
 
 
 //Applies a function to a Value of the specific key and returns the same map but
-//with the specific value applied to the function, if the value isnt find,
-//doesn't change the map
+//with the specific value applied to the function
+//If the value isn't found, this function doesn't change the map
 
 mut<A: Type>(key: Bits, fn: A -> A, map: BitsMap<A>): BitsMap<A>
   ?mut
 
 
-//Deletes a Value of the map within the given key, returns the same map if no
-//value is found for that key
+//Deletes a Value of the map within the given key
+//Returns the same map if no value is found for that key
 
 //Receives:
   // key of the type Bits
   // map of the type BitsMap<A>
-  // returns a Maybe<A>
+  // returns the modified BitsMap<A>
 
 //del<A: Type>(...)
 
 
-//Verifies if has any value for the given key, if has no value returns false, if
-//has the value returns true
-  
+//Returns whether or not the map has a value for a given key
+//When there is a value, returns true
+//When there is no value or the key is not in the map, returns false
 //Receives:
   // key of the type Bits
   // map of the type BitsMap<A>
@@ -73,7 +73,8 @@ key<A: Type>(map: BitsMap<A>): List<Bits>
 
 
 
-//Unites two different maps into one, keeping its structure
+// Unites two different maps into one, keeping its structure
+// When both maps have values for the same key, keeps the one from a
 
 union<A: Type>(a: BitsMap<A>, b: BitsMap<A>): BitsMap<A>
   ?union
