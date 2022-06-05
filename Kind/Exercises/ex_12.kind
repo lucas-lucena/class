@@ -61,7 +61,7 @@ filter<A: Type>(cond: A -> Bool, map: BitsMap<A>): BitsMap<A>
 
 //Applies a function to  all values of the map and returns the map modified 
 
-map<A: Type, B: Type>(fn: A -> B, map: BitsMap<A>): BitsMap<B>
+map<A: Type, B: Type>(fn: A -> B, bitsmap: BitsMap<A>): BitsMap<B>
   ?map
 
 
