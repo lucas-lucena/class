@@ -87,3 +87,16 @@ stress_test(sets: Nat, gets: Nat): IO<Unit>
 
 ex_12:_
   stress_test(1000000, 1000000)
+
+// ex_12: IO<Unit>
+//   IO {
+//     Tests._12.set(set)
+//     Tests._12.get(get)
+//     Tests._12.mut(mut)
+//     Tests._12.del(del)
+//     Tests._12.has(has)
+//     Tests._12.filter(filter)
+//     Tests._12.map(map)
+//     Tests._12.key(key)
+//     Tests._12.union(union)
+//   } 
