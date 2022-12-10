@@ -33,17 +33,17 @@ List.concat xs ys = ?
 
 // // Removes n elements from the start of the list
 // // List.drop<Nat>(3, [1,2,3,4,5]) -> [4, 5]
-List.drop <a> (n: Nat) (xs: (List a)) : (List a)
-List.drop n xs = ?
+List.drop <a> (xs: (List a)) (n: Nat) : (List a)
+List.drop xs n= ?
 
 // // Creates a new list with the N first elements of the previous list
 // // List.take<Nat>(3, [1,2,3,4,5]) -> [1,2,3]
-List.take <a> (n: Nat) (xs: (List a)) : (List a)
-List.take n xs = ?
+List.take <a> (xs: (List a)) (n: Nat) : (List a)
+List.take xs n = ?
 
 // // Applies a function to all elements of a list
-List.map <a> <b> (f: a -> b) (xs: (List a)): (List b)
-List.map f xs = ?
+List.map <a> <b> (xs: (List a)) (f: a -> b) : (List b)
+List.map xs f = ?
 
 // // Returns the same list, with the order reversed
 List.reverse <a> (xs: List a) : (List a)
