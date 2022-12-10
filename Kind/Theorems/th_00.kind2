@@ -3,6 +3,11 @@
 // ::::::::::::::
 // Note: these problems use functions from the base libs, NOT the ones above
 ////Natural numbers
+Nat.same.self (n: Nat) : Equal Nat (Nat.same n) n
+Nat.same.self n = ?
+
+Nat.half.double (n: Nat) : Equal Nat (Nat.half(Nat.double n)) n
+Nat.half.double n = ?
 
 Nat.sub.succ_both (n: Nat) (m: Nat) : Equal Nat (Nat.sub (Nat.succ n) (Nat.succ m)) (Nat.sub n m)
 Nat.sub.succ_both n m = ?
