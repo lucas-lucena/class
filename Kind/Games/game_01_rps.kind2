@@ -1,17 +1,17 @@
-
 // Play options
-Object : Type
-Rock     : Object
-Paper    : Object
-Scissors : Object
+type Object {
+  Rock 
+  Paper
+  Scissors
+}
 
 // // Converts a text to an Object. If not possible, returns rock
-Object.read (code: String): Object
+Object.read (code: String) : Object
 Object.read code = ?
 
 
 // // Converts a number to an Object. If not possible, returns rock
-Object.from_nat (n: U60)  : Object
+Object.from_nat (n: U60) : Object
 Object.from_nat n = ?
 
 
@@ -45,7 +45,7 @@ Main : IO Unit {
     // // Final message to be said: "You won" or "You lost"
     let final_message = Object.match_result user_won
     
-    ask (IO.output (final_message))
+    (IO.output (final_message))
 
     return Unit.new
   }

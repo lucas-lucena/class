@@ -18,7 +18,7 @@ Nat.sub.zero_left n = ?
 Nat.mod.mod_one_equals_zero (n: Nat) : Equal Nat (Nat.mod n 1n) Nat.zero
 Nat.mod.mod_one_equals_zero n = ?
 
-Nat.mod.zero_mod_equals_zero (n: Nat): Equal Nat (Nat.mod Nat.zero (Nat.succ n)) Nat.zero
+Nat.mod.zero_mod_equals_zero (n: Nat) : Equal Nat (Nat.mod Nat.zero (Nat.succ n)) Nat.zero
 Nat.mod.zero_mod_equals_zero n = ?
 
 Nat.mod.go_self (n: Nat) (m: Nat) : Equal Nat (Nat.mod.go n n (Nat.succ m)) Nat.zero

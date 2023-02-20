@@ -1,37 +1,99 @@
 // Integers
-Int : Type
-Int.neg (num: Neg) : Int 
-Int.pos (num: Pos) : Int 
+type Int {
+	neg (num: Neg)
+	pos (num: Pos)
+}
 
 // Positive Numbers
-Pos : Type 
-Pos.zero : Pos
-Pos.succ (pred: Pos) : Pos 
+type Pos {
+	zero
+	succ (pred: Pos)
+}
 
 // Negative Numbers
-Neg : Type
-Neg.one : Neg
-Neg.pred (succ: Neg) : Neg
+type Neg {
+	one 
+	pred (succ: Neg)
+}
+
+// example
+// -0 does not exist
+// Increments a negative number by one
+Neg.succ (n: Neg) : Neg
+Neg.succ Neg.one = Neg.one
+Neg.succ (Neg.pred n.succ) = n.succ
+
+// Functions for negative numbers to help testing 
+// Do not edit those functions
+
+// Converts Neg to Nat
+Neg.to_nat (n: Neg) : Nat
+Neg.to_nat Neg.one = 1n
+Neg.to_nat (Neg.pred n.succ) = Nat.succ (Neg.to_nat n.succ)
+  
+// Converts Nat to Neg
+Nat.to_neg (n: Nat) : Neg {
+	Neg.succ (Nat.to_neg.aux n)
+}
+  
+  // Aux function for Nat.to_neg
+Nat.to_neg.aux (n: Nat) : Neg
+Nat.to_neg.aux Nat.zero = Neg.one
+Nat.to_neg.aux (Nat.succ n.pred) = Neg.pred (Nat.to_neg.aux n.pred)
+
+// Converts Pos to Nat
+Pos.to_nat (n: Pos) : Nat
+Pos.to_nat Pos.zero = 0n
+Pos.to_nat (Pos.succ n.pred) = Nat.succ (Pos.to_nat n.pred)
+
+// Converts Nat to Pos
+Nat.to_pos (n: Nat) : Pos
+Nat.to_pos Nat.zero = Pos.zero
+Nat.to_pos (Nat.succ n.pred) = Pos.succ (Nat.to_pos n.pred)
+
+
+// Converts Pos to String
+Pos.show (n: Pos) : String {
+	String.concat "+" (Show.to_string (Nat.show (Pos.to_nat n)))
+}
+
+// Converts Neg to String
+Neg.show (n: Neg) : String {
+	String.concat "-" (Show.to_string (Nat.show (Neg.to_nat n)))
+}
+
+// Converts Int to String
+Int.show (n: Int) : String 
+Int.show (Int.pos n.num) = Pos.show n.num
+Int.show (Int.neg n.num) = Neg.show n.num
+
+// Creates an int sign
+// true  = Positive 
+// false = Negative
+Inte (sign: Bool) (num: Nat) : Int 
+Inte Bool.true num = Int.pos (Nat.to_pos num) 
+Inte Bool.false Nat.zero = Int.pos Pos.zero 
+Inte Bool.false (Nat.succ num) = Int.neg (Nat.to_neg num)
 
 // // Exercises:
 // Increments an Integer
 // int(false, 1)     = +0
 // int(false, 2)     = -1
 // int(true,  2)     = +3
-Int.inc (a: Int): Int  
+Int.inc (a: Int) : Int  
 Int.inc a = ?
 
 // Decrements an Integer
 // int(false, 1) = -2
 // int(true,  2) = +1
 // int(true,  0) = -1
-Int.dec (a: Int): Int
+Int.dec (a: Int) : Int
 Int.dec a = ?
 // Doubles an Integer
 // int(false, 4) = -8
 // int(false, 1) = -2
 // int(true,  2) = +4
-Int.dbl (a: Int): Int 
+Int.dbl (a: Int) : Int 
 Int.dbl a =? 
 
 // Adds two Integers
@@ -75,13 +137,13 @@ Int.ltn a b = ?
 // Minimum
 // min(int(false, 1), int(true,  0)  = -1
 // min(int(false, 1), int(false, 3)) = -3
-Int.min (a: Int) (b: Int): Int // if A < B then A else B
+Int.min (a: Int) (b: Int) : Int // if A < B then A else B
 Int.min a b = ?
 
 // Maximum
 // max(int(false, 1), int(true,  0)) = +0
 // max(int(false, 1), int(false, 3)) = -1
-Int.max(a: Int) (b: Int): Int // if A > B then A else B
+Int.max(a: Int) (b: Int) : Int // if A > B then A else B
 Int.max a b = ?
 
 // Half

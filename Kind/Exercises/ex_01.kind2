@@ -1,15 +1,16 @@
 // type MaybeBool
 // It maybe holds a Boolean inside it
-MaybeBool : Type
-MaybeBool.none : MaybeBool
-MaybeBool.some (value: Bool) : MaybeBool
+type MaybeBool {
+  none
+  some (value: Bool)
+}
 
 // Returns true if Maybe is none
-Is_none(a: MaybeBool): Bool
-Is_none = ?
+Is_none (a: MaybeBool) : Bool
+Is_none a = ?
 
 // Returns true if Maybe is some
-Is_some(a: MaybeBool): Bool
+Is_some(a: MaybeBool) : Bool
 Is_some a = ?
 
 // Returns true if both inputs are identical
@@ -32,7 +33,7 @@ MaybeBool.create a         = ?
 
 // Returns the first input that is a MaybeBool.some
 // Returns MaybeBool.none if both are MaybeBool.none
-MaybeBool.or (a: MaybeBool) (b: MaybeBool): MaybeBool
+MaybeBool.or (a: MaybeBool) (b: MaybeBool) : MaybeBool
 MaybeBool.or  a b = ?
 
 // Main {

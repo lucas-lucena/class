@@ -1,8 +1,9 @@
 // Nat
 // Advanced exercises involving recursion
-Nat : Type
-Nat.zero : Nat
-Nat.succ (pred: Nat) : Nat
+type Nat {
+	zero
+	succ (pred: Nat) 
+}
 
 // Doubles a number
 Nat.double (n: Nat) : Nat
@@ -29,7 +30,7 @@ Nat.fac a = ?
 
 // Equal
 // Given 2 numbers, it returns true if the 2 are the same and false if they are different.
-Nat.eql (a: Nat) (b: Nat): Bool
+Nat.eql (a: Nat) (b: Nat) : Bool
 Nat.eql a b = ?
 
 
@@ -39,28 +40,28 @@ Nat.eql a b = ?
 // 2 > 1 = True
 // 3 > 3 = False
 // if A > B == True else false
-Nat.gtn (a: Nat) (b: Nat): Bool
+Nat.gtn (a: Nat) (b: Nat) : Bool
 Nat.gtn a b = ?
 
 // Lower than
 // 1 < 2 = True
 // 3 < 3 = False
 // if A > B == False else true 
-Nat.ltn (a: Nat) (b: Nat): Bool
+Nat.ltn (a: Nat) (b: Nat) : Bool
 Nat.ltn a b = ?
 
 // Minimum
 // min(2, 3) = 2
 // min(4, 1) = 1
 // if A < B then A else B
-Nat.min (a: Nat) (b: Nat): Nat
+Nat.min (a: Nat) (b: Nat) : Nat
 Nat.min a b = ?
 
 // Maximum
 // max(2, 3) = 3
 // max(4, 1) = 4
 // if A > B then A else B
-Nat.max (a: Nat) (b: Nat): Nat
+Nat.max (a: Nat) (b: Nat) : Nat
 Nat.max a b = ?
 
 // Divides a number by two

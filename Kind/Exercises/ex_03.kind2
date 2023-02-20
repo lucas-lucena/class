@@ -1,19 +1,19 @@
 
 // Basic Exercises involving Nats
-Nat : Type
-Nat.zero : Nat
-Nat.succ (pred: Nat) : Nat
-
+type Nat {
+	zero
+	succ (pred: Nat) 
+}
 // Increment
 // 2 + 1 = 3
 // 0 + 1 = 1
-Nat.inc(a: Nat): Nat  
+Nat.inc(a: Nat) : Nat  
 Nat.inc a = ?
 
 // Decrement
 // 2 - 1 = 1
 // 0 - 1 = 0
-Nat.dec(a: Nat): Nat  
+Nat.dec(a: Nat) : Nat  
 Nat.dec a = ?
 
 // is_zaro

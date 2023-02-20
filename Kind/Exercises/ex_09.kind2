@@ -19,7 +19,7 @@ List.delete_smallest xs = ?
 
 
 // Returns the same list, in ascending order
-List.sort_ascending (xs: (List Nat)): (List Nat)
+List.sort_ascending (xs: (List Nat)) : (List Nat)
 List.sort_ascending xs = ?
 
 // Returns an element at an index from the list
@@ -27,7 +27,7 @@ List.sort_ascending xs = ?
 //   returns Maybe.some!(element)
 // else
 //   returns Maybe.none!
-List.get <a> (idx: Nat) (xs: (List a)): (Maybe a)
+List.get <a> (idx: Nat) (xs: (List a)) : (Maybe a)
 List.get idx xs = ?
 
 // Removes all elements that does not match a condition

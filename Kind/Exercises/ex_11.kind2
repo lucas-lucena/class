@@ -1,7 +1,9 @@
 // ListMap Exercises
-ListMap <a> : Type 
-ListMap.empty <a> : (ListMap a)
-ListMap.cons <a> (head: (Pair U60 a)) (tail: (ListMap a)) : (ListMap a)
+type ListMap <a> {
+  empty
+  cons (head: (Pair U60 a)) (tail: (ListMap a))
+}
+
 
 // Inserts a value
 // If the key is already present, its value is updated
@@ -33,7 +35,7 @@ ListMap.filter <a> (f: a -> Bool) (lm: (ListMap a)) : (ListMap a)
 ListMap.filter f lm = ?
 
 // Applies a function to all Values
-ListMap.map <a> <b> (f: a -> b) (lm: (ListMap a)): (ListMap b)
+ListMap.map <a> <b> (f: a -> b) (lm: (ListMap a)) : (ListMap b)
 ListMap.map f lm = ?
 
 // Main {

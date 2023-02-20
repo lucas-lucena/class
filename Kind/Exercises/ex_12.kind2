@@ -1,7 +1,8 @@
 // BitsMap Exercises
-BitsMap <a> : Type 
-BitsMap.new <a> : (BitsMap a)
-BitsMap.tie <a> (value: (Maybe a)) (lft: (BitsMap a)) (rgt: (BitsMap a)) : (BitsMap a)
+type BitsMap <a> {
+  new
+  tie (val: Maybe a) (left: Bits.Map a) (right: Bits.Map a)
+}
 
 // Given a Key and a Value, sets the given value to that key in the tree
 // Creates new keys if they don't already exist in the map

@@ -1,18 +1,20 @@
 // Basic exercises involving Lists
-List <a> : Type
-List.nil <a> : (List a)
-List.cons <a> (head: a) (tail: List a) : (List a)
+type List <a> {
+  nil
+  cons (head: a) (tail: List a)
+}
 
-Maybe <a> : Type
-Maybe.none <a> : (Maybe a)
-Maybe.some <a> (value: a) : (Maybe a)
+type Maybe <a>  {
+  none
+  some (value: a)
+}
 
 // // Returns the head of the List
-List.head <a> (xs: (List a)): (Maybe a)
+List.head <a> (xs: (List a)) : (Maybe a)
 List.head xs = ?
 
 // // Returns the list without the first element
-List.tail <a> (xs: (List a)): (List a)
+List.tail <a> (xs: (List a)) : (List a)
 List.tail xs = ?
 
 // // Returns the length of a list
@@ -24,11 +26,11 @@ List.last <a> (xs: (List a)) : (Maybe a)
 List.last xs = ?
 
 // // Returns the list without the last element
-List.init <a> (xs: (List a)): (List a)
+List.init <a> (xs: (List a)) : (List a)
 List.init xs = ?
 
 // // Concatenates two lists
-List.concat <a> (xs: (List a)) (ys: (List a)): (List a)
+List.concat <a> (xs: (List a)) (ys: (List a)) : (List a)
 List.concat xs ys = ?
 
 // // Removes n elements from the start of the list

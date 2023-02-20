@@ -6,7 +6,7 @@
         {
             "label": "kind-run",
             "type": "shell",
-            "command": "cd ${fileDirname} && kind ${fileBasenameNoExtension} --run",
+            "command": " kind2 run $dir$fileName",
             "presentation": {
               "showReuseMessage": false,
               "clear": true,
@@ -16,7 +16,7 @@
         {
             "label": "kind-check",
             "type": "shell",
-            "command": "cd ${fileDirname} && kind ${file}",
+            "command": "kind2 check $dir$fileName",
             "presentation": {
               "showReuseMessage": false,
               "clear": true,
